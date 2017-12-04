@@ -1,0 +1,31 @@
+{
+  "name": "tonxyx/psmas",
+  "description": "Phalcon Shared Module API skeleton",
+  "version": "1.0.0",
+  "keywords": [
+    "phalcon",
+    "module",
+    "multi-module",
+    "shared",
+    "api",
+    "skeleton"
+  ],
+  "type": "library",
+  "license": "BSD-3",
+  "homepage": "https://github.com/tonxyx/phalcon-shared-module-api-skeleton",
+  "authors" : [
+    {
+      "name" : "Toni Butkovic",
+      "email" : "tonibutkovic23@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "ext-phalcon": "~3.0",
+    "swiftmailer/swiftmailer": "^5.4",
+    "aws/aws-sdk-php": "~3.0"
+  },
+  "require-dev": {
+    "phalcon/devtools": "~3.2"
+  }
+}

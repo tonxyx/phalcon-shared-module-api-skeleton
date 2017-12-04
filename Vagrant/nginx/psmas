@@ -1,0 +1,38 @@
+# proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=static_cache:10m max_size=10g inactive=60m ;
+
+server {
+    listen 80;
+    server_name psmas.local;
+    root /vagrant/public;
+    index index.php index.html index.htm;
+    charset utf-8;
+
+    gzip on;
+    gzip_disable "msie6";
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_buffers 16 8k;
+    gzip_http_version 1.1;
+    gzip_types text/plain text/css application/javascript application/x-javascript application/json text/xml application/xml application/xml+rss text/javascript image/svg+xml;
+
+    client_max_body_size 8M;
+    client_body_buffer_size 128K;
+
+    location / {
+        try_files $uri $uri/ /index.php?_url=$uri&$args;
+    }
+
+    location ~ \.php {
+        fastcgi_pass  unix:/run/php/php7.0-fpm.sock;
+        fastcgi_index /index.php;
+
+        include fastcgi_params;
+        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_param PATH_INFO       $fastcgi_path_info;
+        fastcgi_param APPLICATION_ENV  development;
+        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+}
