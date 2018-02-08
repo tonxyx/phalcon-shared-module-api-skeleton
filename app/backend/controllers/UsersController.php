@@ -87,10 +87,7 @@ class UsersController extends ControllerBase {
                 if (!$user->save()) {
                     $this->flash->error($user->getMessages());
                 } else {
-
                     $this->flash->success("User was created successfully");
-
-                    Tag::resetInput();
                 }
             }
         }
@@ -137,10 +134,7 @@ class UsersController extends ControllerBase {
                 if (!$user->save()) {
                     $this->flash->error($user->getMessages());
                 } else {
-
                     $this->flash->success("User was updated successfully");
-
-                    Tag::resetInput();
                 }
             }
         }
@@ -205,10 +199,7 @@ class UsersController extends ControllerBase {
                 if (!$passwordChange->save()) {
                     $this->flash->error($passwordChange->getMessages());
                 } else {
-
                     $this->flash->success('Your password was successfully changed');
-
-                    Tag::resetInput();
                 }
             }
         }
